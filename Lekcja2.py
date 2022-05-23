@@ -9,8 +9,6 @@ def display_board():
   print (board[3] + " | " + board[4] + " | " + board[5] + "   4 | 5 | 6")
   print (board[6] + " | " + board[7] + " | " + board[8] + "   7 | 8 | 9")
 
-display_board()
-
 # Tura gracza
 def handle_turn(player):
   print(player + " twoja kolej")
@@ -20,7 +18,7 @@ def handle_turn(player):
   position = int(position) - 1
   if board[position] != "-":
     print("To miejsce na planszy już jest zajęte")
-  boar[position] = player
+  board[position] = player
   display_board()
 
 # Sprawdzanie wygranej
@@ -33,10 +31,11 @@ def check_rows():
   else:
     return False
 
-def check_colums():
+def check_columns():
   column_1 == board[0] == board[3] == board[6] != "-"
   column_2 == board[1] == board[4] == board[7] != "-"
   column_3 == board[2] == board[5] == board[8] != "-"
+  
   if column_1 or column_2 or column_3:
     return True
   else:
@@ -70,5 +69,9 @@ def check_if_game_is_on(current_player):
 
 def play_game():
   display_board()
-  
+  current_player = "X"
+  while check_if_game_is_on(current_player):
+    handle_turn(current_player)
+    current_player = flip_player(current_player)
+    
 play_game()
