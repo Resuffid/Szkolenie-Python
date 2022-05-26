@@ -32,9 +32,9 @@ def check_rows():
     return False
 
 def check_columns():
-  column_1 == board[0] == board[3] == board[6] != "-"
-  column_2 == board[1] == board[4] == board[7] != "-"
-  column_3 == board[2] == board[5] == board[8] != "-"
+  column_1 = board[0] == board[1] == board[2] != "-"
+  column_2 = board[1] == board[4] == board[7] != "-"
+  column_3 = board[2] == board[5] == board[8] != "-"
   
   if column_1 or column_2 or column_3:
     return True
@@ -42,8 +42,8 @@ def check_columns():
     return False
 
 def check_diagonals():
-  diagonal_1 == board[0] == board[4] == board[8] != "-"
-  diagonal_2 == board[2] == board[4] == board[6] != "-"
+  diagonal_1 = board[0] == board[4] == board[8] != "-"
+  diagonal_2 = board[2] == board[4] == board[6] != "-"
   if diagonal_1 or diagonal_2:
     return True
   else:
@@ -59,7 +59,7 @@ def flip_player(current_player):
 def check_if_game_is_on(current_player):
   if check_rows() or check_columns() or check_diagonals():
     winner = flip_player(current_player)
-    print("Gratulacje" + winner + "! Wygrałeś!")
+    print("Gratulacje " + winner + "! Wygrałeś!")
     return False
   elif "-" not in board:
     print("Mamy remis!")
